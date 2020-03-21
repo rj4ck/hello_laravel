@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('/','UserOrdersController');
+
+
+
+Route::get('/user', 'UserController@create');

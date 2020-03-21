@@ -2,6 +2,15 @@
 
 use Illuminate\Support\Str;
 
+$mongoDNS = env('MONGO_DNS');
+$mongoDatabase = env('MONGO_DATABASE');
+$mongoServer0 = env('MONGO_CLUSTER_0');
+$mongoServer1 = env('MONGO_CLUSTER_1');
+$mongoServer2 = env('MONGO_CLUSTER_2');
+$mongoPassword = env('MONGO_DB_PASSWORD');
+$mongoUserName = env('MONGO_DB_USERNAME');
+$mongoReplicaSetName = env('MONGO_REPLICA_SET_NAME');
+
 return [
 
     /*
@@ -15,7 +24,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'mongodb'),
 
     /*
     |--------------------------------------------------------------------------
@@ -92,11 +101,13 @@ return [
         ],
 
 
-        'mongo_conn' => [
-            'driver' => 'mongodb',
-            'dns' => env('DATABASE_URL'),
-            'database' => env('DATABASE_NAME'),
-        ]
+        'mongodb' => [
+            'options' => [],
+            'dsn' => $mongoDNS,
+            'driver'=> 'mongodb',
+            'database' => $mongoDatabase,
+
+        ],
     ],
 
     /*
